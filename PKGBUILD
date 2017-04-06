@@ -38,7 +38,7 @@ build() {
 
 # Configure Alpine
   LIBS+="-lpam -lkrb5 -lcrypto" ./configure --prefix=/usr \
-  --without-passfile --without-tcl --disable-shared \
+  --with-passfile=.pine-passfile --without-tcl --disable-shared \
   --with-system-pinerc=/etc/${pkgname}.d/pine.conf \
   --with-system-fixed-pinerc=/etc/${pkgname}.d/pine.conf.fixed
 
