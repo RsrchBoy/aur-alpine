@@ -4,7 +4,7 @@
 
 pkgname=alpine
 pkgver=2.21
-pkgrel=99
+pkgrel=199
 pkggit=0473711
 arch=("i686" "x86_64")
 pkgdesc="Apache licensed PINE mail user agent"
@@ -18,11 +18,11 @@ provides=("pine")
 conflicts=("pine" "re-alpine")
 replaces=("pine")
 options=("!makeflags")
-source=(http://repo.or.cz/alpine.git/snapshot/04737118aa1d9ad3db63fb1064267187ae871856.tar.gz)
-md5sums=("b72fc6dabf93c614cab333265581362e")
+source=(alpine-0473711.patched.tar.gz)
+md5sums=('5614336c36384d260f1773ee2afc4f02')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkggit}"
+  cd "${srcdir}/${pkgname}-${pkggit}.patched"
 
 # Configure Alpine
   LIBS+="-lpam -lkrb5 -lcrypto" ./configure --prefix=/usr \
@@ -36,7 +36,7 @@ build() {
 
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkggit}"
+  cd "${srcdir}/${pkgname}-${pkggit}.patched"
 
 # Install Alpine
   make DESTDIR="${pkgdir}" install
